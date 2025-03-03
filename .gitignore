@@ -73,7 +73,7 @@ lib-cov
 
 # Directory of postgres data
 data/
-
+.vscode/
 # Coverage directory used by tools like istanbul
 coverage
 *.lcov

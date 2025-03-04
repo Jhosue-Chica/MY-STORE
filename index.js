@@ -1,14 +1,16 @@
 const express = require('express'); // Importamos express
 const routerApi = require('./routes'); // Importamos el archivo de rutas
 const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.handler'); // Importamos los middlewares de manejo de errores
+const cors = require('cors'); // Importamos cors
+const helmet = require('helmet'); // Importamos helmet para seguridad
+const { config } = require('./config/config'); // Importamos la configuración
 
 const app = express(); // Inicializamos express
-const port = 3000; // Puerto en el que se ejecutará el servido
+const port = config.port; // Usamos el puerto de la configuración
 
-
-const cors = require('cors'); // Importamos cors
+// Middlewares de seguridad
 app.use(cors()); // Usamos cors
-
+app.use(helmet()); // Añadimos helmet para protección de cabeceras HTTP
 
 // Middleware para que express pueda entender json
 app.use(express.json());
@@ -27,8 +29,8 @@ routerApi(app);
 
 // Middlewares de manejo de errores
 app.use(logErrors);
-app.use(errorHandler);
 app.use(boomErrorHandler);
+app.use(errorHandler);
 
 // Iniciamos el servidor
 app.listen(port, () => {

@@ -8,7 +8,7 @@ const config = {
   dbName: process.env.DB_NAME,
   dbHost: process.env.DB_HOST,
   dbPort: process.env.DB_PORT,
-  dbUrl: process.env.DATABASE_URL  // Asegúrate de tener esta línea
+  dbUrl: process.env.DATABASE_URL
 };
 
 console.log('Environment:', config.env);

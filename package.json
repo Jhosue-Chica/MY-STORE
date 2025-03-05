@@ -9,7 +9,8 @@
     "migrations:generate": "sequelize-cli migration:generate --name",
     "migration:run": "sequelize-cli db:migrate",
     "migration:undo": "sequelize-cli db:migrate:undo",
-    "migration:delete": "sequelize-cli db:migrate:undo:all"
+    "migration:delete": "sequelize-cli db:migrate:undo:all",
+    "migrate:prod": "sequelize-cli db:migrate"
   },
   "keywords": [],
   "author": "",

@@ -4,12 +4,11 @@ const initModels = require('./../db/models');
 
 let sequelize;
 
-// Verificar que tengamos una URL de base de datos
-if (config.env === 'production' && config.dbUrl) {
-  console.log('Connecting to production database with URL');
+if (config.env === 'production') {
+  console.log('Using production database connection');
   sequelize = new Sequelize(config.dbUrl, {
     dialect: 'postgres',
-    logging: true,
+    logging: console.log,
     dialectOptions: {
       ssl: {
         require: true,
@@ -18,14 +17,14 @@ if (config.env === 'production' && config.dbUrl) {
     },
   });
 } else {
-  console.log('Connecting to development database with parameters');
+  console.log('Using development database connection');
   const USER = encodeURIComponent(config.dbUser);
   const PASS = encodeURIComponent(config.dbPass);
   const URI = `postgres://${USER}:${PASS}@${config.dbHost}:${config.dbPort}/${config.dbName}`;
 
   sequelize = new Sequelize(URI, {
     dialect: 'postgres',
-    logging: true,
+    logging: console.log,
   });
 }
 

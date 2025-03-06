@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const id = Joi.string().uuid();
+const id = Joi.string();
 const name = Joi.string().min(3).max(50);
 const percentage = Joi.number().integer().min(1).max(100);
 const start_date = Joi.date();
